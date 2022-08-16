@@ -6,10 +6,46 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <script>
-        game();
 
-    </script>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div id="container"></div>
+   <script>
+        const rock = document.querySelector('#rock');
+        const paper = document.querySelector('#paper');
+        const scissors = document.querySelector('#scissors');
+        let win = 0;
+        let winCount = 0;
+        rock.addEventListener('click', () => {
+            win = playRound(getComputerChoice(), 'rock');
+            winCount+=win;
+        });
+        paper.addEventListener('click', () => {
+            win =playRound(getComputerChoice(), 'paper');
+            winCount+=win;
+        });
+        scissors.addEventListener('click', () => {
+            win = playRound(getComputerChoice(), 'scissors');
+            winCount+=win;
+           
+        });
+
+        let count = 0;
+        const btn = document.querySelectorAll('button');
+        btn.forEach((btn) => {
+            btn.addEventListener('click', () => {
+            count++
+            if(count>0 && count%5===0)
+            {
+                game(winCount);
+            };
+            });
+        });
+        
+        
+   </script>
+    
 
 </body>
 </html>
